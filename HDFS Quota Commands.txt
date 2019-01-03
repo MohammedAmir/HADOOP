@@ -1,0 +1,16 @@
+Name Quotas : Maxiumum number of files and directories that can be created in the folder including the parent folder. A quota of 1 will only allow for parent directory creation
+Space Quotas : Maxiumum file total size that can be created in the folder in bytes, a quota space of zero is allowed but no file can be created in the folder. 
+
+1. hdfs dfsadmin -setQuota <N> <directory>...<directory>
+   hdfs dfsadmin -setQuota 4 /user/acl
+
+2. hdfs dfsadmin -setSpaceQuota <N> <directory>...<directory> : Sets a space quota in bytes or g or t for gigabyte or terabyte
+   hdfs dfsadmin -setSpaceQuota 2t /user/acl : default size in byte
+
+3. hdfs dfsadmin -clrSpaceQuota <directory>...<directory> : Removes space quota limit from a directory
+
+4. hdfs dfsadmin -clrQuota <directory>...<directory> : Removes name quota from a directory
+
+5. hdfs dfs -count -q [-v] [-h] /user/acl : display quote information
+ 
+    

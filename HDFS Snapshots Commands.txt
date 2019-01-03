@@ -1,0 +1,25 @@
+If there are snapshots in a snapshottable directory, the directory can be neither deleted nor renamed before all the snapshots are deleted.
+
+1. Enable Snapshots
+   hdfs dfsadmin -allowSnapshot <path>
+
+2. Disable Snapshots
+   hdfs dfsadmin -disallowSnapshot <path>
+
+3. Create Snapshots
+   hdfs dfs -createShanpshot <path> [<snapshotname>] : snapshotname is optional
+
+4. Delete Snapshot
+   hdfs dfs -deleteSnapshot <path> <snapshotname>
+
+5. Recovering Snapshot File
+   hdfs dfs -cp -ptopax /user/directory/.snapshot/source /destination
+
+6. Rename Snapshot
+   hdfs dfs -renameSnapshot <path> <oldName> <newName>
+
+7. List snapshotable directory
+    hdfs lsSnapshottableDir
+
+8. List snapshoted directory / files
+   hdfs dfs -ls /user/acl/.snapshot/test_snapshot

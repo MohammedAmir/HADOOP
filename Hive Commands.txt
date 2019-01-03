@@ -1,0 +1,28 @@
+[root@namenode /]# su - hdfs
+Last login: Thu Dec 20 12:19:10 EST 2018 on pts/0
+[hdfs@namenode ~]$ hdfs dfs -ls /
+[hdfs@namenode /]$ hdfs dfs -put /home/lab/full_text.txt /user/admin/full_text.txt
+[hdfs@namenode /]$ hdfs dfs -ls /user/admin
+[hdfs@namenode /]$ hive
+hive> show databases;
+hive> create database twitter;
+hive> describe database extended twitter;
+hive> use twitter;
+hive> create table full_text
+    > (
+    > id string,
+    > ts string,
+    > lat_lon string,
+    > lat string,
+    > lon string,
+    > tweet string)
+    > row format delimited
+    > fields terminated by '\t';
+hive> describe extended full_text;
+hive> dfs -ls /apps/hive/
+hive> dfs -ls /apps/hive/warehouse;
+hive> load data inpath '/user/admin/full_text.txt' overwrite  into table twitter.full_text;
+hive> select * from twitter.full_text limit 10;
+hive> exit;
+
+[hdfs@namenode ~]$ hive -e "show functions"

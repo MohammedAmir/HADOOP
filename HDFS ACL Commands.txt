@@ -1,0 +1,20 @@
+hdfs dfs -setfacl -m user:diana:r-- /user/admin  : -m to modify acl permission
+hdfs dfs -setfacl -m group:hcat:r-x /user/admin : -m to modify acl permission
+hdfs dfs -setfacl -m user:diana:--- /user/admin  : -m to modify acl permission
+hdfs dfs -setfacl -x user:diana /user/admin : -x is to remove acl permission
+hdfs dfs -setfacl -b /user/admin : -b to remove all acl permission
+hdfs dfs -setfacl -m default:user:diana:r-x /user/admin : default is applied only on directory and not file level
+hdfs dfs -setfacl -m default:group:hcat:r-x /user/admin : default is applied only on directory and not file level
+hdfs dfs -setfacl -k  /user/admin/ : remove all default permissions in the folder
+hdfs dfs -setfacl --set user::rw-,group::rw-,other::--- /user/acl/acl.txt
+hdfs dfs -setfacl -m mask::--- /user/admin  : mask or hide the folder for anyone other than those who have access
+
+[root@namenode /]# hdfs dfs -cat /user/acl/acl.txt
+
+
+-b	Remove all entries, but retain the base ACL entries. The entries for User, Group, and Others are retained for compatbility with Permission Bits.
+-k	Remove the default ACL.
+-R	Apply operations to all files and directories recursively.
+-m	Modify the ACL. New entires are added to the ACL, and existing entries are retained.
+-x	Remove the specified ACL entires. All other ACL entries are retained.
+--set	Fully replace the ACL and discard all existing entries. The acl_spec must include entries for User, Group, and Others for compatibility with Permission Bits.

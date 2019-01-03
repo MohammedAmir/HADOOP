@@ -1,0 +1,28 @@
+HBASE Commands
+
+Log to HBASE with $hbase shell
+
+1. Create table
+	Create table 'table name' , 'column family'
+	column family groups a set of columns together such as user detail like name, age, DOB, address etc...
+	
+2. Insert Data
+	put 'table name', 'ROW_KEY', 'column family: column name1', 'value'
+	put 'table name', 'ROW_KEY', 'column family: column name2', 'value'
+	
+	ROW_KEY is like primary key in RDBMS
+
+3. Retrieve Data, this can be done by either SCAN or GET commands
+	scan is like select * columns : scan 'table name'
+	get is like select with column names specified : get 'tabel name', 'ROW_KEY
+	
+4. Update Data
+	put 'table name', 'ROW_KEY' , 'column family: column name', 'modified value'
+	
+5. Delete Data
+	delete 'table name', 'Row_KEY', 'column family: column name'
+	
+6 Drop Table
+	Disable the table as : disable 'table name'
+	Drop the table as : drop 'table'
+	
